@@ -1,0 +1,6 @@
+/Users/alexander/Documents/RiderProject/FL_Gen/FL_Gen/bin/Debug/FL_Gen.exe
+/Users/alexander/Documents/RiderProject/FL_Gen/FL_Gen/bin/Debug/FL_Gen.pdb
+/Users/alexander/Documents/RiderProject/FL_Gen/FL_Gen/obj/Debug/FL_Gen.csproj.AssemblyReference.cache
+/Users/alexander/Documents/RiderProject/FL_Gen/FL_Gen/obj/Debug/FL_Gen.csproj.CoreCompileInputs.cache
+/Users/alexander/Documents/RiderProject/FL_Gen/FL_Gen/obj/Debug/FL_Gen.exe
+/Users/alexander/Documents/RiderProject/FL_Gen/FL_Gen/obj/Debug/FL_Gen.pdb
