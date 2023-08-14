@@ -5,8 +5,11 @@ internal class Start {
         new Start().StartGenerating();
     }
 
+    private ComplexityData compl_1;//5 levels assembling manually 
+    private ComplexityData compl_2 = new(10, 2, 6); 
+
     private void StartGenerating() {
-        var level = new LevelCreator().Create(5, 4);
+        var level = new LevelCreator().Create(compl_2);
         Console.WriteLine(level);
     }
 }

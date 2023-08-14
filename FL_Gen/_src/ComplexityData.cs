@@ -6,8 +6,10 @@ public class ComplexityData {
     public int complexity;
     public int flasksCount;
 
-    public ComplexityData() {
-        
+    public ComplexityData(int levelsCount, int complexity, int flasksCount) {
+        this.levelsCount = levelsCount;
+        this.complexity = complexity;
+        this.flasksCount = flasksCount;
     }
 }
     

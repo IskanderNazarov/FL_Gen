@@ -42,6 +42,7 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="_src\BallType.cs" />
         <Compile Include="_src\ComplexityData.cs" />
+        <Compile Include="_src\Flask.cs" />
         <Compile Include="_src\Level.cs" />
         <Compile Include="_src\LevelCreator.cs" />
         <Compile Include="_src\Start.cs" />
