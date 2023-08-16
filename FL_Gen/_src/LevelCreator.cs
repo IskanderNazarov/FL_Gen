@@ -75,18 +75,19 @@ public class LevelCreator {
         flasks.Shuffle();*/
 
         //if there is an empty flask - add the ball to it
-        foreach (var flask in flasks) {
+        /*foreach (var flask in flasks) {
             if (flask.IsEmpty()) {
                 flask.AddBall(ball);
                 return;
             }
-        }
+        }*/
 
 
         //then try to add the ball on the same ball
         if (addToSameType) {
             foreach (var flask in flasks) {
-                if (!flask.IsEmpty() && !flask.IsFull() && flask.GetTopBall() == ball) {
+                //if (!flask.IsEmpty() && !flask.IsFull() && flask.GetTopBall() == ball) {
+                if (flask.IsEmpty() || !flask.IsFull() && flask.GetTopBall() == ball) {
                     flask.AddBall(ball);
                     if (flask.IsCompleted()) {
                         flask.RemoveTopBall();

@@ -8,7 +8,7 @@ internal class Start {
     private ComplexityData compl_1; //5 levels are assembled manually 
 
     private ComplexityData[] complexities = {
-        new(complexity: 2, levelsCount: 5, colorsCount: 4, sameColorProb1: 100, sameColorProb2: 100),
+        new(complexity: 2, levelsCount: 5, colorsCount: 5, sameColorProb1: 1, sameColorProb2: 100),
         /*new(complexity: 3, levelsCount: 3, colorsCount: 5, sameColorProb1: 5, sameColorProb2: 90),
         new(complexity: 4, levelsCount: 3, colorsCount: 6, sameColorProb1: 5, sameColorProb2: 90),
         new(complexity: 5, levelsCount: 3, colorsCount: 7, sameColorProb1: 5, sameColorProb2: 90),
