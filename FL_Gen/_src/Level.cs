@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
 
 public class Level {
     public int ballCount { get; set; }
-    public List<List<BallType>> flasks;
+    public List<Flask> flasks;
 
     public override string ToString() {
         var sb = new StringBuilder();
@@ -14,7 +13,7 @@ public class Level {
         sb.Append('\n');
 
         foreach (var flask in flasks) {
-            foreach (var ballType in flask) {
+            foreach (var ballType in flask.balls) {
                 sb.Append((int) ballType + 1);
                 sb.Append(' ');
             }

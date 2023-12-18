@@ -38,7 +38,7 @@ public static class Utils {
     }
     
     
-    public static void WriteLevelToFile(string data, int levelNumber, int complexity, string namePrefix = "") {
+    public static void WriteLevelToFile(string data, int levelNumber) {
         var fileName = levelNumber + ".txt";
         WriteDataToFile(@"../../_levels/" + fileName, data);
     }
