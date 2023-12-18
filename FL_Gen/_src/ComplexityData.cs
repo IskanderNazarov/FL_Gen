@@ -3,6 +3,7 @@ public class ComplexityData {
     public int levelsCount;
     public int complexity;
     public int colorsCount;
+    public int flasksCount;
     public int sameColorProb_1;
     public int sameColorProb_2;
 
