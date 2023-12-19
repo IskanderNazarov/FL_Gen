@@ -1,15 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
 internal class Start {
-    private ComplexityData[] complexityData = {
-        new ComplexityData {complexity = 1, levelsCount = 3, flasksCount = 3},
-        new ComplexityData {complexity = 2, levelsCount = 3, flasksCount = 4},
-        new ComplexityData {complexity = 3, levelsCount = 2, flasksCount = 5},
-        new ComplexityData {complexity = 4, levelsCount = 2, flasksCount = 5},
-        new ComplexityData {complexity = 5, levelsCount = 2, flasksCount = 8},
-        new ComplexityData {complexity = 6, levelsCount = 2, flasksCount = 11},
-    };
-
     private int levelNumber = 1;
 
     public static void Main(string[] args) {
@@ -18,24 +10,32 @@ internal class Start {
 
     private ComplexityData compl_1; //5 levels are assembled manually 
 
+    private const int TOTAL_COUNT = 2000;
     private ComplexityData[] complexities = {
-        new(complexity: 2, levelsCount: 5, colorsCount: 5, sameColorProb1: 1, sameColorProb2: 100),
-        /*new(complexity: 3, levelsCount: 3, colorsCount: 5, sameColorProb1: 5, sameColorProb2: 90),
-        new(complexity: 4, levelsCount: 3, colorsCount: 6, sameColorProb1: 5, sameColorProb2: 90),
-        new(complexity: 5, levelsCount: 3, colorsCount: 7, sameColorProb1: 5, sameColorProb2: 90),
-        new(complexity: 6, levelsCount: 3, colorsCount: 8, sameColorProb1: 5, sameColorProb2: 90),
-        new(complexity: 7, levelsCount: 3, colorsCount: 9, sameColorProb1: 5, sameColorProb2: 90),
-        new(complexity: 8, levelsCount: 3, colorsCount: 10, sameColorProb1: 5, sameColorProb2: 90),
-        new(complexity: 9, levelsCount: 3, colorsCount: 11, sameColorProb1: 5, sameColorProb2: 90),*/
+        //new(complexity: 1, levelsCount: 7, colorsCount: 5, sameColorProb1: 1, sameColorProb2: 100),//manually
+        new(complexity: 2, maxLevelNumber: 15, colorsCount: 6, sameColorProb1: 80, sameColorProb2: 30),//start with level 10, up tp 17
+        new(complexity: 3, maxLevelNumber: 30, colorsCount: 7, sameColorProb1: 60, sameColorProb2: 30),
+        new(complexity: 4, maxLevelNumber: 50, colorsCount: 8, sameColorProb1: 50, sameColorProb2: 20),
+        new(complexity: 5, maxLevelNumber: 90, colorsCount: 9, sameColorProb1: 40, sameColorProb2: 10),
+        new(complexity: 6, maxLevelNumber: 150, colorsCount: 10, sameColorProb1: 30, sameColorProb2: 5),
+        new(complexity: 7, maxLevelNumber: 300, colorsCount: 11, sameColorProb1: 20, sameColorProb2: 5),
+        new(complexity: 8, maxLevelNumber: TOTAL_COUNT, colorsCount: 12, sameColorProb1: 8, sameColorProb2: 4),
     };
 
     private void StartGenerating() {
-        var levelCounter = 1;
+        const float a = 4.6f;
+        const float b = 0.47f;
+        const float c = 5;
+        //const float ttt = a * Math.Log(1 * b) + c;
+        //var flasksCount = a * Math.Log(lvlNum * b) + c;
+        //1 -> 9 levels will be generated manually
+
+        var levelCounter = 11;
         foreach (var cd in complexities) {
+            var levelsCountForComplexity = cd.MaxLevelNumber - levelCounter + 1;
             //generate levels for each complexity data
-            for (var i = 0; i < cd.levelsCount; i++) {
-                var probability = (int) Utils.Lerp(cd.sameColorProb_1, cd.sameColorProb_2,
-                    (float) i / (cd.levelsCount - 1));
+            for (var i = 0; i < levelsCountForComplexity; i++) {
+                var probability = (int) Utils.Lerp(cd.sameColorProb_1, cd.sameColorProb_2, (float) i / (cd.MaxLevelNumber - 1));
                 Console.WriteLine($"Probability for level {levelCounter} is {probability}");
                 var level = new LevelCreator().Create(cd.colorsCount, 4, probability);
 
