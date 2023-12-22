@@ -37,7 +37,8 @@ internal class Start {
             for (var i = 0; i < levelsCountForComplexity; i++) {
                 var probability = (int) Utils.Lerp(cd.sameColorProb_1, cd.sameColorProb_2, (float) i / (cd.MaxLevelNumber - 1));
                 Console.WriteLine($"Probability for level {levelCounter} is {probability}");
-                var level = new LevelCreator().Create(cd.colorsCount, 4, probability);
+                //var level = new LevelCreator().Create(cd.colorsCount, 4, probability);
+                var level = new LevelCreatorShuffling().Create(cd.colorsCount + 2, 4, probability);
 
                 Utils.WriteLevelToFile(level.ToString(), levelCounter);
                 levelCounter++;

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class LevelCreator {
+public class LevelCreatorDefault {
     private Dictionary<BallType, int> availableBalls;
     private List<BallType> availableBallsList;
     private List<BallType> allBallsTypes;
@@ -150,19 +150,13 @@ public class LevelCreator {
             flask.AddBall(ball);
             if (flask.IsCompleted()) {
                 //if added ball completes the flask then remove it and add another random flask
-                Console.WriteLine("111");
                 flask.RemoveTopBall();
-                Console.WriteLine("222");
 
 
                 //find a random ball which is not the same as already generated 'ball'
-                Console.WriteLine("333, count: " + ballsReadyToAdd.Count);
                 ballsReadyToAdd.Shuffle();
-                Console.WriteLine("444");
                 ballsReadyToAdd.Remove(ball);
-                Console.WriteLine("555");
                 flask.AddBall(ballsReadyToAdd[0]);
-                Console.WriteLine("666");
             }
         }
 

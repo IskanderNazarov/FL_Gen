@@ -44,12 +44,14 @@
         <Compile Include="_src\ComplexityData.cs" />
         <Compile Include="_src\Flask.cs" />
         <Compile Include="_src\Level.cs" />
-        <Compile Include="_src\LevelCreator.cs" />
+        <Compile Include="_src\LevelCreatorDefault.cs" />
+        <Compile Include="_src\LevelCreatorShuffling.cs" />
         <Compile Include="_src\Start.cs" />
         <Compile Include="_src\Utils.cs" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="_levels" />
+      <Folder Include="_levels_test" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
