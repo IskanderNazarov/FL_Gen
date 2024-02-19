@@ -33,4 +33,12 @@ public class Level {
 
         return sb.ToString();
     }
+
+    public bool HasSolvedFlask() {
+        foreach (var f in flasks) {
+            if (f.IsCompleted()) return true;
+        }
+
+        return false;
+    }
 }

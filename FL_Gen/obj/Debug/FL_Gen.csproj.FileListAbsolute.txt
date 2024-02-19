@@ -10,3 +10,9 @@ C:\Users\Alexander\Documents\Self\FL_Gen\FL_Gen\obj\Debug\FL_Gen.csprojAssemblyR
 C:\Users\Alexander\Documents\Self\FL_Gen\FL_Gen\obj\Debug\FL_Gen.csproj.CoreCompileInputs.cache
 C:\Users\Alexander\Documents\Self\FL_Gen\FL_Gen\obj\Debug\FL_Gen.exe
 C:\Users\Alexander\Documents\Self\FL_Gen\FL_Gen\obj\Debug\FL_Gen.pdb
+C:\Users\Alexander\Documents\MyWork\FL_Gen\FL_Gen\obj\Debug\FL_Gen.csprojAssemblyReference.cache
+C:\Users\Alexander\Documents\MyWork\FL_Gen\FL_Gen\obj\Debug\FL_Gen.csproj.CoreCompileInputs.cache
+C:\Users\Alexander\Documents\MyWork\FL_Gen\FL_Gen\obj\Debug\FL_Gen.exe
+C:\Users\Alexander\Documents\MyWork\FL_Gen\FL_Gen\obj\Debug\FL_Gen.pdb
+C:\Users\Alexander\Documents\MyWork\FL_Gen\FL_Gen\bin\Debug\FL_Gen.exe
+C:\Users\Alexander\Documents\MyWork\FL_Gen\FL_Gen\bin\Debug\FL_Gen.pdb

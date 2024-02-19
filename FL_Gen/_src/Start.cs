@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 internal class Start {
     private int levelNumber = 1;
@@ -10,17 +9,30 @@ internal class Start {
 
     private ComplexityData compl_1; //5 levels are assembled manually 
 
-    private const int TOTAL_COUNT = 2000;
+    private const int TOTAL_COUNT = 5000;
+
     private ComplexityData[] complexities = {
         //new(complexity: 1, levelsCount: 7, colorsCount: 5, sameColorProb1: 1, sameColorProb2: 100),//manually
-        new(complexity: 2, maxLevelNumber: 15, colorsCount: 6, sameColorProb1: 80, sameColorProb2: 30),//start with level 10, up tp 17
-        new(complexity: 3, maxLevelNumber: 30, colorsCount: 7, sameColorProb1: 60, sameColorProb2: 30),
-        new(complexity: 4, maxLevelNumber: 50, colorsCount: 8, sameColorProb1: 50, sameColorProb2: 20),
-        new(complexity: 5, maxLevelNumber: 90, colorsCount: 9, sameColorProb1: 40, sameColorProb2: 10),
-        new(complexity: 6, maxLevelNumber: 150, colorsCount: 10, sameColorProb1: 30, sameColorProb2: 5),
-        new(complexity: 7, maxLevelNumber: 300, colorsCount: 11, sameColorProb1: 20, sameColorProb2: 5),
-        new(complexity: 8, maxLevelNumber: TOTAL_COUNT, colorsCount: 12, sameColorProb1: 8, sameColorProb2: 4),
+        new ComplexityData(compl: 2, maxLvlNum: 15, idCount: 6, sameIDProb1: 70, sameIDProb2: 30, freq5_1: 5,
+            freq5_2: 2), //start with level 10, up tp 17
+        new ComplexityData(compl: 3, maxLvlNum: 30, idCount: 7, sameIDProb1: 60, sameIDProb2: 30, freq5_1: 5,
+            freq5_2: 2),
+        new ComplexityData(compl: 4, maxLvlNum: 50, idCount: 8, sameIDProb1: 50, sameIDProb2: 20, freq5_1: 5,
+            freq5_2: 2),
+        new ComplexityData(compl: 5, maxLvlNum: 90, idCount: 9, sameIDProb1: 40, sameIDProb2: 10, freq5_1: 5,
+            freq5_2: 2),
+        new ComplexityData(compl: 6, maxLvlNum: 150, idCount: 10, sameIDProb1: 30, sameIDProb2: 5, freq5_1: 4,
+            freq5_2: 2),
+        new ComplexityData(compl: 7, maxLvlNum: 300, idCount: 11, sameIDProb1: 20, sameIDProb2: 5, freq5_1: 5,
+            freq5_2: 2),
+        new ComplexityData(compl: 8, maxLvlNum: TOTAL_COUNT, idCount: 12, sameIDProb1: 8, sameIDProb2: 4, freq5_1: 3,
+            freq5_2: 2),
     };
+    /*private ComplexityData[] complexities = {
+        //new(complexity: 1, levelsCount: 7, colorsCount: 5, sameColorProb1: 1, sameColorProb2: 100),//manually
+        new(compl: 2, maxLvlNum: 5, idCount: 6, sameIDProb1: 80, sameIDProb2: 30, freq5_1: 5,freq5_2: 2), //start with level 10, up tp 17
+        new(compl: 3, maxLvlNum: 10, idCount: 10, sameIDProb1: 60, sameIDProb2: 30, freq5_1: 5, freq5_2: 2),
+    };*/
 
     private void StartGenerating() {
         const float a = 4.6f;
@@ -31,14 +43,28 @@ internal class Start {
         //1 -> 9 levels will be generated manually
 
         var levelCounter = 11;
+
         foreach (var cd in complexities) {
-            var levelsCountForComplexity = cd.MaxLevelNumber - levelCounter + 1;
+            var levelsCountForComplexity = cd.MaxLvlNumber - levelCounter + 1;
             //generate levels for each complexity data
             for (var i = 0; i < levelsCountForComplexity; i++) {
-                var probability = (int) Utils.Lerp(cd.sameColorProb_1, cd.sameColorProb_2, (float) i / (cd.MaxLevelNumber - 1));
-                Console.WriteLine($"Probability for level {levelCounter} is {probability}");
-                //var level = new LevelCreator().Create(cd.colorsCount, 4, probability);
-                var level = new LevelCreatorShuffling().Create(cd.colorsCount + 2, 4, probability);
+                var probOfTheSameID =
+                    (int) Utils.Lerp(cd.SameIdProb1, cd.SameIdProb2, (float) i / (cd.MaxLvlNumber - 1));
+                var freqOf_5_BallsFlask =
+                    (int) Utils.Lerp(cd.freqOf5Flask1, cd.freqOf5Flask2, (float) i / (cd.MaxLvlNumber - 1));
+                /*Console.WriteLine($"Probability for level {levelCounter} is {probOfTheSameID}");
+                Console.WriteLine($"freqOf_5_BallsFlask is {freqOf_5_BallsFlask}");*/
+                var ballsCount = (i + 1) % freqOf_5_BallsFlask == 0 ? 5 : 4;
+                //exclude  levels with completed flasks
+                Level level;
+                do {
+                    level = new LevelCreatorDefault().Create(cd.IdCount, ballsCount, probOfTheSameID);
+                } while (level.HasSolvedFlask());
+
+                if (level.HasSolvedFlask()) {
+                    Console.WriteLine("Level number: " + levelCounter);
+                }
+                //var level = new LevelCreatorShuffling().Create(cd.IdCount + 2, ballsCount, probOfTheSameID);
 
                 Utils.WriteLevelToFile(level.ToString(), levelCounter);
                 levelCounter++;

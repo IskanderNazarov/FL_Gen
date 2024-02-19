@@ -40,8 +40,8 @@ public static class Utils {
     
     public static void WriteLevelToFile(string data, int levelNumber) {
         var fileName = levelNumber + ".txt";
-        //WriteDataToFile(@"../../_levels/" + fileName, data);
-        WriteDataToFile(@"../../_levels_test/" + fileName, data);
+        //WriteDataToFile(@"../../_levels_test/" + fileName, data);
+        WriteDataToFile(@"../../_levels_new/" + fileName, data);
     }
 
     public static string ReadDataFromFile(string filePath) {

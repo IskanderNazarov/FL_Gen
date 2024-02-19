@@ -51,6 +51,7 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="_levels" />
+      <Folder Include="_levels_new" />
       <Folder Include="_levels_test" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
